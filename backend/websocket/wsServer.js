@@ -1,3 +1,5 @@
+const getCPUUsage = require("../services/metricService");
+
 const WebSocket = require("ws");
 
 const wss = new WebSocket.Server({ port: 8080 });
@@ -9,15 +11,23 @@ wss.on("connection", (ws) => {
     message: "Connected to monitoring system"
   }));
 
-  setInterval(() =>{
+  setInterval(() => {
+  getCPUUsage((data) => {
+
     const alert = {
-        type: "CPU_ALERT",
-        value: Math.floor(Math.random()*100),
-        message: "CPU usage high"
+      type: "CPU_ALERT",
+      value: data.value,
+      message: data.value > 70 ? "High CPU usage" : "Normal"
     };
 
-    ws.send(JSON.stringify(alert));
-  }, 5000);
+    wss.clients.forEach(client => {
+      if (client.readyState === 1) {
+        client.send(JSON.stringify(alert));
+      }
+    });
+
+  });
+}, 5000);
 });
 
 module.exports = wss;
