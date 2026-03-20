@@ -1,3 +1,4 @@
+const wss = require("./websocket/wsServer");
 const express = require("express");
 
 const app = express();
