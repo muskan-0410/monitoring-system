@@ -1,3 +1,7 @@
 backend/node_modules/
 backend/.env
 test.txt
+# Database module
+Database/node_modules/
+Database/.env
+Database/package-lock.json
