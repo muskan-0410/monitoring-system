@@ -1,4 +1,4 @@
-const config = require("../config/config.json");
+const config = require("../config");
 const WebSocket = require("ws");
 const wss = new WebSocket.Server({ port: 8080 });
 
