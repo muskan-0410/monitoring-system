@@ -1,3 +1,4 @@
+const config = require("../config/config.json");
 const WebSocket = require("ws");
 const wss = new WebSocket.Server({ port: 8080 });
 
@@ -20,7 +21,7 @@ alertEmitter.on("thresholdBreach", (alert) => {
 });
   setInterval(() => {
   getCPUUsage((data) => {
-    const isHigh = data.value > 70;
+    const isHigh = data.value > config.cpuThreshold;
     const alert = {
       type: "CPU_ALERT",
       value: data.value,
