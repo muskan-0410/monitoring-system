@@ -19,16 +19,5 @@ alertEmitter.on("thresholdBreach", (alert) => {
     }
   });
 });
-  setInterval(() => {
-  getCPUUsage((data) => {
-    const isHigh = data.value > config.cpuThreshold;
-    const alert = {
-      type: "CPU_ALERT",
-      value: data.value,
-      message: isHigh ? "High CPU usage" : "Normal"
-    };
-    alertEmitter.emit("thresholdBreach", alert);
-  });
-}, 5000);
 
 module.exports = wss;

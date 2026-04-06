@@ -1,3 +1,4 @@
+require("./cron/monitorCron");
 const wss = require("./websocket/wsServer");
 const express = require("express");
 
