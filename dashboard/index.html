@@ -418,17 +418,24 @@
   };
 
   ws.onmessage = (event) => {
-    console.log("DATA:", event.data);
-
     const data = JSON.parse(event.data);
 
-    if (data.type === "CPU_ALERT") {
-      document.getElementById("cpu").innerText = data.value + "%";
-      if (data.message === "High CPU usage") {
-      document.getElementById("cpu-alert").innerText = "⚠ High CPU!";
-    } else {
-      document.getElementById("cpu-alert").innerText = "Normal!!";
+    if (data.type === "SYSTEM_METRICS") {
+      document.getElementById("cpu").innerText = data.cpu + "%";
+      document.getElementById("memory").innerText = data.memory + "%";
+      document.getElementById("disk").innerText = data.disk + "%";
     }
+
+    if (data.type === "CPU_ALERT") {
+      document.getElementById("cpu-alert").innerText = "⚠ High CPU!";
+    }
+
+    if (data.type === "MEMORY_ALERT") {
+      alert("⚠ High Memory Usage!");
+    }
+
+    if (data.type === "DISK_ALERT") {
+      alert("⚠ High Disk Usage!");
     }
   };
 
