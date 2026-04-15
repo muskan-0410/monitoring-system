@@ -8,8 +8,8 @@
     "start": "node db.js"
   },
   "dependencies": {
-    "mongoose": "^8.3.4",
-    "dotenv": "^16.4.5"
+    "dotenv": "^16.6.1",
+    "mongoose": "^8.3.4"
   },
   "author": "",
   "license": "ISC"
