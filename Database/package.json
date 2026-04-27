@@ -1,0 +1,16 @@
+{
+  "name": "realtime-monitoring-db",
+  "version": "1.0.0",
+  "description": "Database module for Real-Time Monitoring System with Config Management",
+  "main": "db.js",
+  "scripts": {
+    "test": "node test.js",
+    "start": "node db.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.6.1",
+    "mongoose": "^8.3.4"
+  },
+  "author": "",
+  "license": "ISC"
+}

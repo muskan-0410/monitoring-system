@@ -1,3 +1,8 @@
+require("dotenv").config();
+
+const { connectDB } = require("../Database/db");
+connectDB();
+require("./cron/monitorCron");
 const wss = require("./websocket/wsServer");
 const express = require("express");
 
